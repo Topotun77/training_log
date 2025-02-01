@@ -37,7 +37,8 @@ def stat_count_in_day(data) -> str:
     dt_list = [datetime.strptime(x['date'], '%Y-%m-%d %H:%M') for x in data]
     # Дельта в днях
     day = max((dt_list[-1] - dt_list[0]).days, 1)
-    return str(round(len(data) / day, 2))
+    return (str(round(len(data) / day, 2)) +
+            f' (дней: {day})')
 
 
 def stat_average_weight_loss(data) -> str:
@@ -45,4 +46,5 @@ def stat_average_weight_loss(data) -> str:
     Средняя потеря веса на одну тренировку
     """
     wg_list = [float(x['weight']) for x in data]
-    return str(round(absolut_change(wg_list)/len(wg_list), 3))
+    cnt = len(wg_list)
+    return str(round(absolut_change(wg_list)/cnt, 3))
