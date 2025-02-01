@@ -1,0 +1,92 @@
+[
+    {
+        "date": "2025-01-24 13:00",
+        "exercise": "Гантели",
+        "weight": "122.1",
+        "repetitions": "25"
+    },
+    {
+        "date": "2025-01-24 15:00",
+        "exercise": "Интенсив",
+        "weight": "121.3",
+        "repetitions": "35"
+    },
+    {
+        "date": "2025-01-25 15:00",
+        "exercise": "Пресс",
+        "weight": "120.9",
+        "repetitions": "20"
+    },
+    {
+        "date": "2025-01-26 09:00",
+        "exercise": "Прогулка",
+        "weight": "120.8",
+        "repetitions": "25"
+    },
+    {
+        "date": "2025-01-27 13:00",
+        "exercise": "Кушать хотелось",
+        "weight": "122",
+        "repetitions": "10"
+    },
+    {
+        "date": "2025-01-27 15:00",
+        "exercise": "Пресс",
+        "weight": "121.1",
+        "repetitions": "15"
+    },
+    {
+        "date": "2025-01-28 09:00",
+        "exercise": "Повороты туловища",
+        "weight": "121",
+        "repetitions": "35"
+    },
+    {
+        "date": "2025-01-28 11:07",
+        "exercise": "Отжимание",
+        "weight": "120.2",
+        "repetitions": "15"
+    },
+    {
+        "date": "2025-01-29 16:15",
+        "exercise": "Пресс",
+        "weight": "119.8",
+        "repetitions": "25"
+    },
+    {
+        "date": "2025-01-30 13:13",
+        "exercise": "Жим лежа",
+        "weight": "119",
+        "repetitions": "20"
+    },
+    {
+        "date": "2025-01-30 14:00",
+        "exercise": "Гантели",
+        "weight": "118.8",
+        "repetitions": "10"
+    },
+    {
+        "date": "2025-01-31 00:00",
+        "exercise": "Пресс",
+        "weight": "118.5",
+        "repetitions": "25"
+    },
+    {
+        "date": "2025-01-31 08:00",
+        "exercise": "Встали - сели",
+        "weight": "118.4",
+        "repetitions": "20"
+    },
+    {
+        "date": "2025-01-31 08:30",
+        "exercise": "Сели - поели",
+        "weight": "120",
+        "repetitions": "10"
+    },
+    {
+        "date": "2025-02-01 08:00",
+        "exercise": "Пресс",
+        "weight": "119.5",
+        "repetitions": "10"
+    }
+]
