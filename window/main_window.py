@@ -207,6 +207,10 @@ class TrainingLogApp(tk.Tk):
     def view_statistics(self):
         """ Отображение статистики. Настраивается через файл настроек settings.py """
         data = self.get_filter_data()
+        if not data:
+            messagebox.showerror('Нет данных', 'Нет данных для вывода статистики. '
+                                               'Измените фильтр для отбора записей.')
+            return
         stat = ''
         for item in STATISTIC:
             stat += item[0] + item[1](data) + item[2] + '\n'

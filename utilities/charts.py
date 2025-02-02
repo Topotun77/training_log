@@ -1,7 +1,10 @@
 from datetime import datetime
+from tkinter import messagebox
 
 import matplotlib.pyplot as plt
 from matplotlib import pylab
+from pyexpat.errors import messages
+
 from .calculations import difference_values
 
 
@@ -10,6 +13,11 @@ def create_any_plot(data):
     Построение графиков на основе данных
     :param data: Данные в виде списка словарей
     """
+    if not data:
+        messagebox.showerror('Нет данных', 'Нет данных для построения графиков. '
+                                           'Измените фильтр для отбора записей.')
+        return
+
     plt.figure(figsize=(8, 8))
     fig = pylab.gcf()
     fig.canvas.manager.set_window_title(f'Динамика изменения веса')
