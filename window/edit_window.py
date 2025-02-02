@@ -47,6 +47,9 @@ class EditWindow(tk.Toplevel):
                                      image=self.icon_ok, compound=tk.LEFT)
         self.add_button.grid(column=0, row=4, pady=5, padx=10)
 
+        # Определим нажатие клавиши Enter как событие "Добавить запись"
+        self.bind('<Return>', self.on_button_click)
+
         self.add_button = ttk.Button(self, text="Отмена ", command=self.cancel_button_click,
                                      image=self.icon_cancel, compound=tk.LEFT)
         self.add_button.grid(column=1, row=4, pady=5, padx=10)
@@ -72,7 +75,7 @@ class EditWindow(tk.Toplevel):
         except ValueError:
             return False
 
-    def on_button_click(self):
+    def on_button_click(self, event=None):
         """ Нажата клавиша <ОК> """
         self.exercise = self.exercise_entry.get()
         self.weight = self.weight_entry.get()

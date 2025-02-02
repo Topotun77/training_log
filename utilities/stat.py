@@ -30,13 +30,21 @@ def stat_count_training(data) -> str:
     return str(len(data))
 
 
-def stat_count_in_day(data) -> str:
+def stat_count_day(data) -> str:
     """
-    Среднее количество тренировок в день
+    Количество дней в периоде
     """
     dt_list = [datetime.strptime(x['date'], '%Y-%m-%d %H:%M') for x in data]
     # Дельта в днях
-    day = max((dt_list[-1] - dt_list[0]).days, 1)
+    day = (dt_list[-1] - dt_list[0]).days + 1
+    return str(int(day))
+
+
+def stat_training_in_day(data) -> str:
+    """
+    Среднее количество тренировок в день
+    """
+    day = int(stat_count_day(data))
     return (str(round(len(data) / day, 2)) +
             f' (дней: {day})')
 

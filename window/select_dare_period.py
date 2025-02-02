@@ -16,11 +16,12 @@ class DateSelectionWindow(tk.Toplevel):
         self.title("Выбор периода")
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
-        x = (screen_width / 2) - 110
-        y = (screen_height / 2) - 50
-        self.geometry('%dx%d+%d+%d' % (265, 100, x, y))
+        x = int((screen_width - 265) / 2)
+        y = int((screen_height - 136) / 2)
+        self.geometry('%dx%d+%d+%d' % (265, 136, x, y))
         self.resizable(False, False)
 
+        self.label_info = ttk.Label(self, text='<Отмена> - фильтрация без учета дат.')
         self.label_start_date = tk.Label(self, text="Начальная дата:")
         self.label_end_date = tk.Label(self, text="Конечная дата:")
         self.date_entry_start = DateEntry(self, width=10, bg='darkblue', fg='white', borderwidth=3, relief='ridge',
@@ -45,20 +46,24 @@ class DateSelectionWindow(tk.Toplevel):
             image=self.icon_cancel,
             compound=tk.LEFT
         )
-        self.label_start_date.grid(row=0, column=0, padx=5, pady=5, sticky=tk.E)
-        self.date_entry_start.grid(row=0, column=1, padx=5, pady=5, sticky=tk.W)
-        self.label_end_date.grid(row=1, column=0, padx=5, pady=5, sticky=tk.E)
-        self.date_entry_end.grid(row=1, column=1, padx=5, pady=5, sticky=tk.W)
-        self.button_ok.grid(row=2, padx=10, column=0, pady=5)
-        self.button_cancel.grid(row=2, padx=10, column=1, pady=5)
+        # Определим нажатие клавиши Enter как событие "Добавить запись"
+        self.bind('<Return>', self.on_button_click)
 
-    def on_button_click(self, parent):
+        self.label_info.grid(row=0, column=0, padx=5, pady=5, columnspan=2, sticky=tk.W)
+        self.label_start_date.grid(row=1, column=0, padx=5, pady=5, sticky=tk.E)
+        self.date_entry_start.grid(row=1, column=1, padx=5, pady=5, sticky=tk.W)
+        self.label_end_date.grid(row=2, column=0, padx=5, pady=5, sticky=tk.E)
+        self.date_entry_end.grid(row=2, column=1, padx=5, pady=5, sticky=tk.W)
+        self.button_ok.grid(row=3, padx=10, column=0, pady=5)
+        self.button_cancel.grid(row=3, padx=10, column=1, pady=5)
+
+    def on_button_click(self, parent=None):
         """ Нажата кнопка <ОК> """
         self.selected_start_date = self.date_entry_start.get_date()
         self.selected_end_date = self.date_entry_end.get_date()
         self.destroy()
 
-    def cancel_button_click(self, parent):
+    def cancel_button_click(self, parent=None):
         """ Нажата кнопка <Отмена> """
         self.selected_start_date = None
         self.selected_end_date = None

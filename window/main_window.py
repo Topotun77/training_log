@@ -5,7 +5,7 @@ from tkcalendar import DateEntry
 
 from utilities.file_utl import image_to_icon, load_data, save_data, load_data_filter
 from utilities.charts import create_any_plot
-from settings import ICON_VIEW, ICON_CHART, ICON_ADD, STATISTIC
+from settings import ICON_VIEW, ICON_CHART, ICON_ADD, ICON_STAT, STATISTIC
 from window.select_dare_period import DateSelectionWindow
 from window.training_grid import ToplevelGrid
 
@@ -21,11 +21,11 @@ class DateTimePicker(ttk.Frame):
         self.date_entry.pack(side=tk.LEFT, padx=10, pady=5)
 
         validate = self.master.register(self._validate_digit_input)
-        self.hour_spin = ttk.Spinbox(self, from_=0, to=23, width=5, format='%02.0f', validate="key",
+        self.hour_spin = ttk.Spinbox(self, from_=0, to=23, width=3, format='%02.0f', validate="key",
                                      validatecommand=(validate, '%P'))
         self.hour_spin.pack(side=tk.LEFT, padx=0, pady=5)
 
-        self.minute_spin = ttk.Spinbox(self, from_=0, to=59, width=5, format='%02.0f', validate="key",
+        self.minute_spin = ttk.Spinbox(self, from_=0, to=59, width=3, format='%02.0f', validate="key",
                                      validatecommand=(validate, '%P'))
         self.minute_spin.pack(side=tk.LEFT, padx=0, pady=5)
 
@@ -69,6 +69,7 @@ class TrainingLogApp(tk.Tk):
         self.icon_view = image_to_icon(ICON_VIEW)
         self.icon_chart = image_to_icon(ICON_CHART)
         self.icon_add = image_to_icon(ICON_ADD)
+        self.icon_statistic = image_to_icon(ICON_STAT)
 
         self.main_frame = ttk.Frame(self)
         self.main_frame.pack(padx=5, pady=5, expand=True, fill=tk.BOTH)
@@ -98,7 +99,10 @@ class TrainingLogApp(tk.Tk):
 
         self.add_button = ttk.Button(self.main_frame, text="Добавить запись ", command=self.add_entry,
                                      image=self.icon_add, compound=tk.LEFT)
-        self.add_button.grid(column=0, row=4, columnspan=2, pady=5, padx=10)
+        self.add_button.grid(column=0, row=4, columnspan=2, pady=5, padx=10, sticky=tk.EW)
+
+        # Определим нажатие клавиши Enter в поле repetitions_entry как событие "Добавить запись"
+        self.repetitions_entry.bind('<Return>', self.add_entry)
 
         self.frame_view = tk.Frame(self.main_frame)
         self.frame_view.grid(row=5, column=0, columnspan=2, pady=1)
@@ -113,7 +117,7 @@ class TrainingLogApp(tk.Tk):
 
         self.view_button = ttk.Button(self.main_frame, text="Посмотреть статистику с фильтром ",
                                       command=self.view_statistics,
-                                      image=self.icon_chart, compound=tk.LEFT)
+                                      image=self.icon_statistic, compound=tk.LEFT)
         self.view_button.grid(column=0, row=6, columnspan=2, pady=5, padx=5)
 
         self.view_button = ttk.Button(self.main_frame, text="Построить графики с фильтром ",
@@ -141,7 +145,7 @@ class TrainingLogApp(tk.Tk):
         except ValueError:
             return False
 
-    def add_entry(self):
+    def add_entry(self, event=None):
         """
         Добавление записи в журнал (json-файл)
         """

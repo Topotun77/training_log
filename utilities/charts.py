@@ -3,7 +3,6 @@ from tkinter import messagebox
 
 import matplotlib.pyplot as plt
 from matplotlib import pylab
-from pyexpat.errors import messages
 
 from .calculations import difference_values
 
@@ -40,7 +39,7 @@ def create_any_plot(data):
     ax2 = plt.subplot2grid(shape=(15, 10), loc=(6, 0), rowspan=3, colspan=10)
     ax2.plot(dt_list, dif_list, label='Снижение веса', linewidth=0.8)
     # Отмечаем нулевую линию
-    ax2.axhline(0, color='red', linestyle='--', linewidth=1)
+    ax2.axhline(0, color='red', linestyle='--', linewidth=0.5)
     ax2.set_title('Изменение веса (снижение)')
     ax2.set_ylabel('Снижение веса')
     ax2.legend()

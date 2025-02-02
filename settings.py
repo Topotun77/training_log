@@ -1,7 +1,7 @@
 # Настройки приложения
 
 from utilities.stat import (stat_weight_reduce, stat_relative_weight, stat_count_training,
-                            stat_count_in_day, stat_average_weight_loss)
+                            stat_training_in_day, stat_average_weight_loss)
 
 # Файл для сохранения данных
 data_file = 'data/training_log.json'
@@ -19,6 +19,7 @@ ICON_CHART = './icon/chart.png'
 ICON_OK = './icon/ok.png'
 ICON_CANCEL = './icon/cancel.png'
 ICON_EDIT = './icon/edit.png'
+ICON_STAT = './icon/statistic.png'
 
 # Текст вывода статистики. Настройка производится в формате списка списков:
 # [['Текст до параметра', <функция для вычисления>, 'Текст после параметра'], ...]
@@ -44,7 +45,7 @@ STATISTIC = [
     ],
     [
         'Среднее количество тренировок в день: ',
-        stat_count_in_day,
+        stat_training_in_day,
         '\n'
     ],
     [
