@@ -36,7 +36,7 @@
 расчета статистики. Для фильтрации данных помимо дат, используются данные из полей ввода.  
 ![img04](https://github.com/Topotun77/training_log/blob/master/ScreenShots/n005.JPG?raw=true)
 ### График, построенный по данным:
-Также можно построить график по отфильтрованным данным.  
+Можно построить график по отфильтрованным данным.  
 ![img05](https://github.com/Topotun77/training_log/blob/master/ScreenShots/n003.JPG?raw=true)
 ### Статистика по отфильтрованным данным:
 ![img06](https://github.com/Topotun77/training_log/blob/master/ScreenShots/n006.JPG?raw=true)
